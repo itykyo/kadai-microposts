@@ -1,0 +1,21 @@
+<% if @favorites.any? %>
+  <span class="badge"><%= @count_favorites %></span>
+  <ul class="media-list">
+    <% @favorites.each do |favorite| %>
+      <li class="media">
+        <div class="media-left">
+          <img class="media-object img-rounded" src="<%= gravatar_url(favorite.user, { size: 50 }) %>" alt="">
+        </div>
+        <div class="media-body">
+          <div>
+            <%= favorite.user.name %>
+          </div>
+          <div>
+            <p><%= favorite.content %></p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @favorites %>
+<% end %>
